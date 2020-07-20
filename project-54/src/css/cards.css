@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.bac {
+  width: 100vw;
+  height: 170vw;
+  background-image: url("../img/cards/background.png");
+  background-size: 100%;
+  background-position: 0 -4vw;
+  background-repeat: no-repeat;
+}
+.word {
+  height: 160vw;
+  background-image: url("../img/cards/word.png");
+  background-size: 70%;
+  background-position: 11vw 7vw;
+  background-repeat: no-repeat;
+}
+.card {
+  height: 162vw;
+  background-image: url("../img/cards/cards.png");
+  background-size: 70%;
+  background-position: 12vw 37vw;
+  background-repeat: no-repeat;
+}
+.btn {
+  height: 150vw;
+  background-image: url("../img/cards/btn.png");
+  background-size: 50%;
+  background-position: 23vw 121vw;
+  background-repeat: no-repeat;
+}
+/*# sourceMappingURL=cards.css.map */

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Async ball</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    .ball1 {
+        width: 50px;
+        height: 50px;
+        background-color: aqua;
+        border-radius: 50%;
+        transform: translateX(0);
+    }
+    .ball2 {
+        width: 50px;
+        height: 50px;
+        background-color: darkorange;
+        border-radius: 50%;
+        transform: translateX(0);
+    }
+    .ball3 {
+        width: 50px;
+        height: 50px;
+        background-color: slategrey;
+        border-radius: 50%;
+        transform: translateX(0);
+    }
+    </style>
+</head>
+<body>
+    <div class="ball ball1"></div>
+    <div class="ball ball2"></div>
+    <div class="ball ball3"></div>
+
+    <script src="./animate.js"></script>
+    <script>
+        /* eslint-disable */
+        const ball1 = document.querySelector('.ball1')
+        const ball2 = document.querySelector('.ball2')
+        const ball3 = document.querySelector('.ball3')
+
+        // demo 使用时只把相应注释取消就行
+
+        // callback 用法的 demo
+        // debugger;
+        function move(ball, target, callback) {
+            clearInterval(ball.timer);
+            ball.timer = setInterval(function() {
+                var step = (target - ball.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (ball.offsetLeft === target) {
+                    // 停止动画 本质是停止定时器
+                    clearInterval(ball.timer);
+                    // 回调函数写到定时器结束里面
+                    // if (callback) {
+                    //     // 调用函数
+                    //     callback();
+                    // }
+                    callback && callback();
+                }
+            
+                //  步长公式：(目标值 - 现在的位置) / 10
+                ball.style.marginLeft = ball.offsetLeft + step + 'px';
+            }, 30);  
+        }
+
+        // animateX(ball1, 100)
+        // move(ball1, 200, function () {
+        //     move(ball2, 200, function () {
+        //         move(ball3, 200, function () {
+        //         console.log('over')
+        //         })
+        //     })
+        // })
+
+        function move(ball, target) {
+            return new Promise((resolve, reject) => {
+                clearInterval(ball.timer);
+                ball.timer = setInterval(function() {
+                    var step = (target - ball.offsetLeft) / 10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    if (ball.offsetLeft === target) {
+                        // 停止动画 本质是停止定时器
+                        clearInterval(ball.timer);
+                        // 回调函数写到定时器结束里面
+                        // if (callback) {
+                        //     // 调用函数
+                        //     callback();
+                        // }
+                        resolve()
+                    }
+                
+                    //  步长公式：(目标值 - 现在的位置) / 10
+                    ball.style.marginLeft = ball.offsetLeft + step + 'px';
+                }, 30);  
+            })
+        }
+
+        // Promise 用法的 demo
+        move(ball1, 100)
+          .then(() => {
+            return move(ball2, 100)
+          })
+          .then(() => {
+            return move(ball3, 100)
+          })
+          .then(() => {
+            console.log('over')
+          })
+
+        // async/await 用法的 demo
+        // async function go() {
+        //     await move(ball1, 100)
+        //     await move(ball2, 100)
+        //     await move(ball3, 100)
+        //     return 'over'
+        // }
+        // go().then(res => { console.log(res) })
+    </script>
+</body>
+</html>

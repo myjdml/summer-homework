@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  height: 163vw;
+  background-image: url("../img/aword/background.png");
+  background-size: 120%;
+  background-position: 0 -15.5vw;
+  background-repeat: no-repeat;
+}
+.header {
+  height: 163vw;
+  background-image: url("../img/aword/header.png");
+  background-size: 87%;
+  background-position: 5vw 14vw;
+  background-repeat: no-repeat;
+}
+.word {
+  height: 163vw;
+  background-image: url("../img/aword/word.png");
+  background-size: 43%;
+  background-position: 27vw 45vw;
+  background-repeat: no-repeat;
+}
+.information {
+  height: 163vw;
+  background-image: url("../img/aword/information.png");
+  background-size: 50%;
+  background-position: 23vw 58vw;
+  background-repeat: no-repeat;
+}
+.btn-component {
+  width: 100vw;
+  height: 30vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 86vw;
+}
+.btn1 {
+  width: 45vw;
+  height: 20vw;
+  background-image: url("../img/aword/btn1.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.btn2 {
+  width: 45vw;
+  height: 20vw;
+  background-image: url("../img/aword/btn2.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+/*# sourceMappingURL=award.css.map */

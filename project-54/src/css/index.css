@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 15px;
+}
+#box {
+  width: 100vw;
+}
+.main {
+  width: 100vw;
+  height: 1540px;
+  background-image: url("../img/index/background.jpg");
+  background-size: 116%;
+  background-position: 9px -149px;
+}
+.cover {
+  width: 96vw;
+  position: absolute;
+  top: 7vw;
+  left: 4vw;
+}
+.cover1,
+.cover2 {
+  margin: 0 auto;
+  width: 90vw;
+}
+.btn {
+  width: 22vw;
+  height: 32vw;
+  cursor: pointer;
+  background-image: url("../img/index/btn.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 6vw;
+  top: 126vw;
+}
+/*# sourceMappingURL=index.css.map */

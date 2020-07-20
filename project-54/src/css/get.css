@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  height: 163vw;
+  background-image: url("../img/get/background.png");
+  background-size: 128%;
+  background-position: -15vw -15.5vw;
+  background-repeat: no-repeat;
+}
+.arrow {
+  height: 163vw;
+  background-image: url("../img/get/arrow.png");
+  background-size: 90%;
+  background-position: 4vw 53vw;
+  background-repeat: no-repeat;
+}
+.inner {
+  height: 163vw;
+  background-image: url("../img/get/inner.png");
+  background-size: 70%;
+  background-position: 15vw 19vw;
+  background-repeat: no-repeat;
+}
+.btn1 {
+  height: 163vw;
+  background-image: url("../img/get/btn1.png");
+  background-size: 40%;
+  background-position: 28vw 129vw;
+  background-repeat: no-repeat;
+}
+.cover {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 163vw;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.card {
+  height: 163vw;
+  background-image: url("../img/get/card.png");
+  background-size: 35%;
+  background-position: 31vw 34vw;
+  background-repeat: no-repeat;
+}
+.btn2 {
+  height: 163vw;
+  background-image: url("../img/get/btn2.png");
+  background-size: 50%;
+  background-position: 23vw 117vw;
+  background-repeat: no-repeat;
+}
+/*# sourceMappingURL=get.css.map */

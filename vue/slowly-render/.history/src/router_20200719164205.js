@@ -1,0 +1,78 @@
+import { render } from './render.js'
+
+let currentRouterView = () => ''
+let base = ''
+
+export const createHashRouter = (baseUrl, routes) => {
+  base = baseUrl
+  const routesMap = new Map() // JS 中 Map 可以实现 LRU 算法
+  routes.forEach((route) => {
+    routesMap.set(route.path, route.component)
+  })
+
+  const go = (path) => {
+    if (routesMap.has(path)) {
+      window.location.hash = path
+    } else throw new Error('url is not exist.')
+  }
+
+  const handleHashChange = e => {
+    const path = window.location.hash.slice(1) // #/about => /about
+    currentRouterView = routesMap.get(path ? path : '/') // 处理 url 没有 hash 时当作首页处理，127.0.0.1/ => 127.0.0.1/#/
+    render()
+  }
+
+  window.addEventListener('load', handleHashChange)
+  window.addEventListener('hashchange', handleHashChange)
+
+  return { go }
+}
+
+export const createHistoryRouter = (baseUrl, routes) => {
+  // TODO: homework
+  // const path = window.location.pathname
+  base = baseUrl
+  const routesMap = new Map()
+  routes.forEach((route) => {
+    routesMap.set(route.path, route.component)
+  })
+
+  const go = (path) => {
+    if (routesMap.has(path)) {
+      history.pushState(path,'', path)
+      handleHistroyChange()
+    } else throw new Error('url is not exist.')
+  }
+
+  const handleHistroyChange = e => {
+    const path = window.location.pathname
+    currentRouterView = routesMap.get(path ? path : '/') 
+    render()
+  }
+
+  const bingA = (e) => {
+    let aList = document.getElementsByTagName("a");
+    let path = [];
+    aList.forEach((item) => {
+      path.push(item)
+    })
+    path.forEach((item) => {
+      let url = item.href;
+      let path = url.substr(url.lastIndexOf("/"));
+      item.onclick = () => {
+        go(path);
+        bindA();
+        return false;
+      };
+    });
+  }
+
+  window.addEventListener('load', handleHistroyChange)
+  window.addEventListener("load", bindA);
+  window.addEventListener('popstate', handleHistroyChange)
+
+  return { go }
+}
+
+export const RouterView = (props) => currentRouterView(props)
+export const RouterLink = (props) => `<a href="${base}${props.url}">${props.text}</a>`
